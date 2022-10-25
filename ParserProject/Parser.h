@@ -1,4 +1,7 @@
 #include "Stmt.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 #include <vector>
 
 using namespace std;
@@ -17,9 +20,7 @@ class Parser
     //Variables:
     int start_exist = 0; //Set start to false
     int end_exist = 0; //Set end to false
-    string parsed_command;
-    vector<string> inst_buffer;
-
+    // string parsed_command;
 
     //Constructor:
     Parser();
@@ -28,7 +29,7 @@ class Parser
 
     
 
-    int GetFlag(string line);
+    int GetFlag(string line, string* parsed_command,vector<STMT*> inst_buffer);
     //Create and STMT:
     void BuildStmt(int flag, string line, string command);
 };

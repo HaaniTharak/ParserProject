@@ -2,12 +2,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 class InstructBuf: public STMT
 {
     public:
     //Create constructor:
     InstructBuf();
+    //vector<STMT*> inst_buffer;
 };
 
 

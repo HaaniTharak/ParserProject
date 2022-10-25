@@ -1,5 +1,6 @@
 #include "Parser.h"
-
+#include "InstructionBuffer.h"
+#include <vector>
 #include <cctype>
 #include <cstring>
 
@@ -9,7 +10,7 @@ Parser::Parser()
     return;
 }
 
-int Parser::GetFlag(string entry)
+int Parser::GetFlag(string entry, string* parsed_command)
 {
     int flag;
     //Getting the first command(Before the first whitespace):
@@ -31,6 +32,7 @@ int Parser::GetFlag(string entry)
     }
     //cerr << "Before: " << before_whitespace << "\n";
     string command = before_whitespace; 
+    *parsed_command = command;
     //cerr << "Command: " << command << "\n";
     
     /*------------------------------ FLAG CHECKING: ------------------------------*/
@@ -76,13 +78,13 @@ int Parser::GetFlag(string entry)
 #endif
 
 
-void BuildStmt(int flag, string line, string command)
+void BuildStmt(int flag, string line, string command, vector<STMT*> inst_buffer)
 {
     cerr << "BUILDING THE STMT!!!\n";
 
     //Instructional Buffer:
-    inst_buffer.
-
+    inst_buffer.push_back(command);
+    cerr << "INST BUFFER: " << inst_buffer[0] << "\n";
 
 
     //Create stmt variable:
