@@ -1,0 +1,4 @@
+START
+pushi 9
+exit
+end
