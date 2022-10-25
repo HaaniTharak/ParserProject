@@ -1,3 +1,5 @@
+#ifndef PROJECTMAIN
+#define PROJECTMAIN
 
 #include <iostream>
 #include <fstream>
@@ -11,3 +13,4 @@ using namespace std;
 
 //DEFINE declarations:
 
+#endif

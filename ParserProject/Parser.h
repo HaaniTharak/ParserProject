@@ -1,4 +1,8 @@
-#include "Stmt.h"
+#ifndef PARSER
+#define PARSER
+#include "InstructionBuffer.h"
+#include <cctype>
+#include <cstring>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -29,7 +33,8 @@ class Parser
 
     
 
-    int GetFlag(string line, string* parsed_command,vector<STMT*> inst_buffer);
+    int GetFlag(string line, string* parsed_command);
     //Create and STMT:
-    void BuildStmt(int flag, string line, string command);
+    void BuildStmt(int flag, string line, string command,vector<STMT*> inst_buffer);
 };
+#endif 

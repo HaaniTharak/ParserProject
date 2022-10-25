@@ -1,8 +1,5 @@
 #include "Parser.h"
-#include "InstructionBuffer.h"
-#include <vector>
-#include <cctype>
-#include <cstring>
+
 
 //Constructor:
 Parser::Parser()
@@ -83,7 +80,7 @@ void BuildStmt(int flag, string line, string command, vector<STMT*> inst_buffer)
     cerr << "BUILDING THE STMT!!!\n";
 
     //Instructional Buffer:
-    inst_buffer.push_back(command);
+    //inst_buffer.push_back(command);
     cerr << "INST BUFFER: " << inst_buffer[0] << "\n";
 
 

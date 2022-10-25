@@ -1,8 +1,11 @@
+#ifndef _INSTRUCTIONBUFFER_ 
+#define _INSTRUCTIONBUFFER_ 
+
 #include "Stmt.h"
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
+//#include <vector>
 
 class InstructBuf: public STMT
 {
@@ -13,3 +16,5 @@ class InstructBuf: public STMT
 };
 
 
+
+#endif 

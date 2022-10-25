@@ -1,3 +1,6 @@
+#ifndef _STMT_
+#define _STMT_
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -12,3 +15,5 @@ class STMT
     //Print the number
     virtual string Printer() = 0;
 };
+
+#endif

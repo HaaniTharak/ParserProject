@@ -20,11 +20,11 @@ void ReadCommand(string line)
 
     string parsed_command;
     vector<STMT*> inst_buffer;
-    int flag = obj.GetFlag(lower, &parsed_command, inst_buffer );
+    int flag = obj.GetFlag(lower, &parsed_command);
 
 
     cerr << "Parsed Command: " << parsed_command << "\n";
-    //obj.BuildStmt(flag, lower, parsed_command);
+    //obj.BuildStmt(flag, lower, parsed_command, inst_buffer );
 
     /**/
 }
