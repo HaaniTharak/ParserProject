@@ -79,8 +79,15 @@ int Parser::GetFlag(string entry)
 void BuildStmt(int flag, string line, string command)
 {
     cerr << "BUILDING THE STMT!!!\n";
+
+    //Instructional Buffer:
+    inst_buffer.
+
+
+
     //Create stmt variable:
     STMT* stmt = nullptr;
+
     /*Count the number of paramters for the command, by counting whitespace:
     //Count how many parameters there are, if 2 whitepsaces, then it means;
     //One command and 2 extra parameters...I think?*/
@@ -91,6 +98,7 @@ void BuildStmt(int flag, string line, string command)
     }
     //cerr << "Number of WhiteSpace: " << num_whitespace << "\n";
 
+#if 0
     switch(flag)
     {
         case(NONE_FLAG):
@@ -143,5 +151,6 @@ void BuildStmt(int flag, string line, string command)
             }
 
     }
+#endif 
 
 }
