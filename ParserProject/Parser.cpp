@@ -75,13 +75,13 @@ int Parser::GetFlag(string entry, string* parsed_command)
 #endif
 
 
-void BuildStmt(int flag, string line, string command, vector<STMT*> inst_buffer)
+void Parser::BuildStmt(int flag, string line, string command, vector<STMT*> inst_buffer)
 {
     cerr << "BUILDING THE STMT!!!\n";
 
     //Instructional Buffer:
     //inst_buffer.push_back(command);
-    cerr << "INST BUFFER: " << inst_buffer[0] << "\n";
+    //cerr << "INST BUFFER: " << inst_buffer[0] << "\n";
 
 
     //Create stmt variable:

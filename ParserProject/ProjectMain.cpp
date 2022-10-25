@@ -22,9 +22,9 @@ void ReadCommand(string line)
     vector<STMT*> inst_buffer;
     int flag = obj.GetFlag(lower, &parsed_command);
 
-
+    cerr << "Flag in Main: " << flag << "\n";
     cerr << "Parsed Command: " << parsed_command << "\n";
-    //obj.BuildStmt(flag, lower, parsed_command, inst_buffer );
+    obj.BuildStmt(flag, lower, parsed_command, inst_buffer);
 
     /**/
 }
