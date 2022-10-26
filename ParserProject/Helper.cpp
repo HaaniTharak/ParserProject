@@ -1,7 +1,8 @@
 #include "Helper.h"
 
+//Don't Change this function its only for error checking it its throwing you errors then comment it out:
 int ErrorChecking(char* arg)
-{
+{   
     fstream inputfile;
     string line;
     string lower;
@@ -21,8 +22,7 @@ int ErrorChecking(char* arg)
             //cerr << vec[i] <<"\n";
             i++;
         }
-        if(vec[vec.size()-1] != "end"){cerr << "Program did not end in END!!!\n";return ERROR; }
-        
+        if(vec[vec.size()-1] != "end"){cerr << "Program did not end in END!!!\n";return ERROR; }        
         for(i = 0; i < vec.size();i++){
             line = vec[i];
             //line = lower;
@@ -44,24 +44,23 @@ int ErrorChecking(char* arg)
     return NOERROR;
 }
 
-
+/* ReadCommand notes to keep in mind:
+  This runs the Parser, if anything needs to be runner, for the parser,
+  then it should be run here(this is unlikely but mentioned just in case):
+*/
 void ReadCommand(string line, InstructBuf* ibuf)
 {
-    //cerr << "CONSTRUCTED!!!\n";
-    Parser obj;
-    //Convert instructions to lowercase(For consistentcy in program):
+    Parser obj; //Parser object to call the function 
+    //Convert instructions to lowercase(For consistentcy and to ALWAYS ensure correct inputs in program):
     string lower = line;
     string::iterator character = lower.begin();
     while(character != lower.end()){
         *character = tolower(*character);
         character++;
     }
-    
     /*----------------------------------------------------------Get the Flag:----------------------------------------------------------*/
+    //Stores the parsed command to which gets executed in BuildStmt
     string parsed_command;
     int flag = obj.GetFlag(lower, &parsed_command);
     obj.BuildStmt(flag, lower, parsed_command, ibuf);
-
-    //cerr << "Instruction Size: " << ibuf->inst_buffer.size() << "\n";
-    //cerr << "INST BUFFER: " << ibuf->inst_buffer[0]->Printer()<< "\n";
 }
