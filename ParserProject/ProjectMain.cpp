@@ -1,75 +1,8 @@
 #include "ProjectMain.h"
 #include "Parser.h"
+#include "Helper.h"
 #include <vector>
 
-//#if 0
-static int ErrorChecking(char* arg);
-static int ErrorChecking(char* arg)
-{
-    fstream inputfile;
-    string line;
-    string lower;
-    string sec_line;
-    inputfile.open(arg);
-    vector<string> vec;
-    if(inputfile.is_open()){
-        //Converts into lower case and adds to a vector:
-        int i = 0;
-        while (getline(inputfile,line)){
-            lower = line; string::iterator character = lower.begin();
-            while(character != lower.end()){
-                *character = tolower(*character);
-                character++;
-            }
-            vec.push_back(lower);
-            //cerr << vec[i] <<"\n";
-            i++;
-        }
-        if(vec[vec.size()-1] != "end"){cerr << "Program did not end in END!!!\n";return ERROR; }
-        
-        for(i = 0; i < vec.size();i++){
-            line = vec[i];
-            //line = lower;
-            //Read in the instructions HERE:
-            if(i == 0 && line != "start"){cerr<<"Start does not begin the program!!!\n";return ERROR;}
-            if(i == 0 && line == "end"){cerr<<"The program start with end!!!\n";return ERROR;}
-            if(line == "start"){
-                for(int j = 1; j<vec.size()-1;j++){
-                    sec_line = vec[j];
-                    if(sec_line == "start"){cerr << "BOTH are start!!!\n"; return ERROR;}
-                }       
-            }
-            //if(i != 0 && line == "end"){return ERROR;}
-            //cerr << line << "\n"; //TEST STATEMENT
-        }
-        //Close the input file:
-        inputfile.close();
-    }
-    return NOERROR;
-}
-//#endif
-
-static void ReadCommand(string line);
-static void ReadCommand(string line, InstructBuf* ibuf)
-{
-    //cerr << "CONSTRUCTED!!!\n";
-    Parser obj;
-    //Convert instructions to lowercase(For consistentcy in program):
-    string lower = line;
-    string::iterator character = lower.begin();
-    while(character != lower.end()){
-        *character = tolower(*character);
-        character++;
-    }
-    
-    /*----------------------------------------------------------Get the Flag:----------------------------------------------------------*/
-    string parsed_command;
-    int flag = obj.GetFlag(lower, &parsed_command);
-    obj.BuildStmt(flag, lower, parsed_command, ibuf);
-
-    //cerr << "Instruction Size: " << ibuf->inst_buffer.size() << "\n";
-    //cerr << "INST BUFFER: " << ibuf->inst_buffer[0]->Printer()<< "\n";
-}
 
 int main(int argc, char* argv[])
 {
@@ -80,43 +13,49 @@ int main(int argc, char* argv[])
         cerr << "./a.out practice_case.txt prac_out.txt \n";
         return EXIT_FAILURE;
     }
-    //Error checking
-   // ErrorChecking(argv[1]);
+    /*--------------------------------------------Initailze Object Variables:--------------------------------------------*/
+    //Create and instance of Instruct Buffer to add the vector to it to hold the instruction Buffer:
+    InstructBuf* ibuf = new InstructBuf(); //This is the Instruction Buffer
+    //You will need to create the Symbol Table and the String Buffer instances here:
+    //(As done Above for the instruction buffer):
 
+    /*----------------------------------Input and output variables----------------------------------*/
     //Open an input file:
-    fstream inputfile;
-    ofstream outfile;
-    string line;
-    string newname  = argv[1];
-    newname += ".pout";
-    InstructBuf* ibuf = new InstructBuf();
-    int is_valid = NOERROR;
-
+    fstream inputfile; //Input file
+    string line; //Is the line in the file
     inputfile.open(argv[1]);
+    //Open output file:
+    //This is meant to create the output file in the correct order:
+    ofstream outfile; string out_name  = argv[1]; out_name += ".pout";
+    outfile.open(out_name);
+
     //IF the file is open:
     if(inputfile.is_open()){
+        /*_____________________________________Checks Errors in file:_____________________________________*/
+        int is_valid = NOERROR; //Set to assume No error in file(Refer to h file to see what NOERROR etc is)
         is_valid = ErrorChecking(argv[1]);
         if(is_valid == ERROR){cerr << "ERROR!!! INVALID INPUT!!!\n";outfile.open(argv[2]); outfile.close(); return EXIT_FAILURE;}
         
-
+        /*______________________________________________Start Parsing______________________________________________*/
+        //Reads the the line from the file:
         while(getline(inputfile,line)){
-            //Read in the instructions HERE:
+            //Read in the instructions HERE(PARSES the file & reads teh commands):
             ReadCommand(line, ibuf);
-            //cerr << line << "\n"; //TEST STATEMENT
         }
-        //Write to the outputfile for step2:
+        /*---------------------------------------Write to the outputfile:---------------------------------------*/
+            /*=========================Currently only works for the Instruction Buffer=========================*/
         //Open the output file:
-        outfile.open(newname);
         int i = 0;
         while(i < ibuf->inst_buffer.size()){
             outfile << ibuf->inst_buffer[i]->Printer(); 
             i++;
-            //MAy need ths:
-            //if(i != ibuf->inst_buffer.size()){}
+            //MAy need ths://if(i != ibuf->inst_buffer.size()){}
             outfile << "\n"; 
         }
+        /*------------------------------FILE Writing complete to the outputfile:------------------------------*/
+
         //Close the input and output files:
-        inputfile.close();
+        inputfile.close(); 
         outfile.close();
     }
     else{ 

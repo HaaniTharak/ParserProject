@@ -26,7 +26,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-
+/*THIS CONTAINS THE INSTRUCTION BUFFER WHICH IS STORED IN A VECTOR:*/
 class InstructBuf
 {
     public:
@@ -34,7 +34,4 @@ class InstructBuf
     InstructBuf();
     vector<STMT*> inst_buffer;
 };
-
-
-
 #endif 
