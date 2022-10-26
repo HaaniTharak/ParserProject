@@ -1,5 +1,9 @@
 #include "Exit.h"
 
+Exit::Exit()
+{
+    return;
+}
 
 string Exit::Printer()
 {

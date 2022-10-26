@@ -1,4 +1,4 @@
-#include "InstructionBuffer.h"
+#include "Stmt.h"
 
 class Div: public STMT
 {

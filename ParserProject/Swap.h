@@ -1,9 +1,10 @@
-#include "InstructionBuffer.h"
+#include "Stmt.h"
 
 class Swap: public STMT
 {
+    
+    public:
     //MIGHT NEED A CONSTRUCTOR
     Swap();
-    public:
     virtual string Printer();
 };

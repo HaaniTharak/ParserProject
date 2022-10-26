@@ -1,4 +1,4 @@
 START
-pushi 9
+Add
 exit
 end

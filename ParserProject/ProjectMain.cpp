@@ -17,16 +17,13 @@ void ReadCommand(string line)
     //cerr << "Lower: " << lower << "\n";
     //cerr << "Line: " << line << "\n";
     /*Get the Flag:*/
-
     string parsed_command;
     vector<STMT*> inst_buffer;
     int flag = obj.GetFlag(lower, &parsed_command);
-
-    cerr << "Flag in Main: " << flag << "\n";
-    cerr << "Parsed Command: " << parsed_command << "\n";
+    //cerr << "Parsed Command: " << parsed_command << "\n";
+    //cerr << "Flag in Main: " << flag << "\n";
+    //cerr << "BUILDING THE STMT!!!\n";
     obj.BuildStmt(flag, lower, parsed_command, inst_buffer);
-
-    /**/
 }
 
 int main(int argc, char* argv[])
@@ -34,6 +31,8 @@ int main(int argc, char* argv[])
     //Check if the number arguments are correct:
     if(argc != 3){//Remember the executable is one
         cerr << "Incorrect number of arguments\n";
+        cerr << "g++ -std=c++11 *.cpp\n";
+        cerr << "./a.out practice_case.txt prac_out.txt \n";
         return EXIT_FAILURE;
     }
     //Open an input file:

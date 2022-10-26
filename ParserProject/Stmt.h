@@ -14,6 +14,8 @@ class STMT
     STMT();
     //Print the number
     virtual string Printer() = 0;
+    
+    string stmt_command;
 };
 
 #endif

@@ -1,6 +1,7 @@
 #ifndef PARSER
 #define PARSER
 #include "InstructionBuffer.h"
+#include "Stmt.h"
 #include <cctype>
 #include <cstring>
 #include <iostream>
