@@ -7,5 +7,6 @@ Mul::Mul()
 
 string Mul::Printer()
 {
-    return "Mul\n";
+    //return "Mul\n";
+    return "Mul";
 }

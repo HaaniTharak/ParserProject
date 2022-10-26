@@ -7,5 +7,6 @@ Negate::Negate()
 
 string Negate::Printer()
 {
-    return "Negate\n";
+    //return "Negate\n";
+    return "Negate";
 }

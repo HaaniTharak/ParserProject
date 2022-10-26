@@ -7,5 +7,6 @@ Swap::Swap()
 
 string Swap::Printer()
 {
-    return "Swap\n";
+    //return "Swap\n";
+    return "Swap";
 }

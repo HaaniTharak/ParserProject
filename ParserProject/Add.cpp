@@ -7,5 +7,6 @@ Add::Add()
 
 string Add::Printer()
 {
-    return "Add\n";
+    //return "Add\n";
+    return "Add";
 }

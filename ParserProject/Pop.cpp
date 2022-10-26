@@ -7,5 +7,6 @@ Pop::Pop()
 
 string Pop::Printer()
 {
-    return "Pop\n";
+    //return "Pop\n";
+    return "Pop";
 }

@@ -8,5 +8,6 @@ Dup::Dup()
 
 string Dup::Printer()
 {
-    return "Dup\n";
+    //return "Dup\n";
+    return "Dup";
 }

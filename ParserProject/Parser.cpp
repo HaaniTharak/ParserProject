@@ -74,14 +74,8 @@ int Parser::GetFlag(string entry, string* parsed_command)
 #endif
 
 
-void Parser::BuildStmt(int flag, string line, string command, vector<STMT*> inst_buffer)
+void Parser::BuildStmt(int flag, string line, string command, InstructBuf* ibuf)
 {
-    //Instructional Buffer:
-    //STMT* stmt_command = (STMT*)command;
-    //inst_buffer.push_back(command);
-    //cerr << "INST BUFFER: " << inst_buffer[0] << "\n";
-
-
     //Create stmt variable:
     STMT* stmt = nullptr;
 
@@ -94,26 +88,28 @@ void Parser::BuildStmt(int flag, string line, string command, vector<STMT*> inst
         character++;
     }
     //cerr << "Number of WhiteSpace: " << num_whitespace << "\n";
-
-//#if 0
     switch(flag)
     {
         case(NONE_FLAG):
-            if(command == "start"){Start* start = new Start(); stmt = start; inst_buffer.push_back(start); break;}
-            if(command == "exit"){Exit* stmt = new Exit(); inst_buffer.push_back(stmt);break;}
-            if(command == "pop"){Pop* stmt = new Pop(); inst_buffer.push_back(stmt); break;}
-            if(command == "dup"){Dup* stmt = new Dup(); inst_buffer.push_back(stmt); break;}
-            if(command == "swap"){Swap* stmt = new Swap(); inst_buffer.push_back(stmt); break;}
-            if(command == "add"){Add* stmt = new Add(); inst_buffer.push_back(stmt); break;}
-            if(command == "negate"){ Negate* stmt = new Negate(); inst_buffer.push_back(stmt); break;}
-            if(command == "mul"){Mul* stmt = new Mul(); inst_buffer.push_back(stmt); break;}
-            if(command == "div"){Div* stmt = new Div(); inst_buffer.push_back(stmt); break;}
-            if(command == "return"){PrintTos* stmt = new PrintTos(); inst_buffer.push_back(stmt); break;}
+            if(command == "start"){Start* start = new Start(); stmt = start; ibuf->inst_buffer.push_back(start); break;}
+            if(command == "exit"){Exit* stmt = new Exit(); ibuf->inst_buffer.push_back(stmt);break;}
+            if(command == "pop"){Pop* stmt = new Pop(); ibuf->inst_buffer.push_back(stmt); break;}
+            if(command == "dup"){Dup* stmt = new Dup(); ibuf->inst_buffer.push_back(stmt); break;}
+            if(command == "swap"){Swap* stmt = new Swap(); ibuf->inst_buffer.push_back(stmt); break;}
+            if(command == "add"){Add* stmt = new Add(); ibuf->inst_buffer.push_back(stmt); break;}
+            if(command == "negate"){ Negate* stmt = new Negate(); ibuf->inst_buffer.push_back(stmt); break;}
+            if(command == "mul"){Mul* stmt = new Mul(); ibuf->inst_buffer.push_back(stmt); break;}
+            if(command == "div"){Div* stmt = new Div(); ibuf->inst_buffer.push_back(stmt); break;}
+            if(command == "printtos"){PrintTos* stmt = new PrintTos(); ibuf->inst_buffer.push_back(stmt); break;}
             //Need Symbol Table:
             //if(command == "return"){stmt = new Return();break;}
         case(PUSHI_FLAG):
             if(command == "pushi"){
                 cerr << "Pushi in STMT\n";
+                PushI* push = new PushI();
+                int idx = line.find_first_of(" ");
+                push->push_var = line.substr(idx+1);
+                ibuf->inst_buffer.push_back(push);
                 break;
             }
             break;
@@ -143,15 +139,12 @@ void Parser::BuildStmt(int flag, string line, string command, vector<STMT*> inst
         case(END_FLAG):
             if (command == "end"){
                 //End:
-                End* end = new End(); inst_buffer.push_back(end); break;
+                //End* end = new End(); ibuf->inst_buffer.push_back(end); break;
                 cerr << "End\n";
                 break;
             }
 
     }
-    
-//#endif 
-    cerr << "INST BUFFER: " << inst_buffer[0]->Printer()<< "\n";
-    //cerr << "I AM SO DONE WITH THIS HOLY BAD WORD THE STMT!!!\n";
-
+    //cerr << "INST BUFFER: " << ibuf->inst_buffer[0]->Printer()<< "\n";
+    //cerr << "HERE1!!!!!!!!!!!!!!!!!!!!!!!!!!";
 }

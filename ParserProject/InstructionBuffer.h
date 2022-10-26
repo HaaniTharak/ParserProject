@@ -27,7 +27,7 @@
 #include <string>
 #include <vector>
 
-class InstructBuf: public STMT
+class InstructBuf
 {
     public:
     //Create constructor:

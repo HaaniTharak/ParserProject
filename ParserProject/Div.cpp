@@ -9,5 +9,6 @@ Div::Div()
 
 string Div::Printer()
 {
-    return "Div\n";
+    //return "Div\n";
+    return "Div";
 };

@@ -3,6 +3,6 @@
 class PrintTos: public STMT
 {
     public:
-    PrintTos();
+    //PrintTos();
     virtual string Printer();
 };

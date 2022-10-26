@@ -10,7 +10,11 @@
 #include <vector>
 
 using namespace std;
-
+//Error:
+#define ERROR -1
+//Valid Input:
+#define NOERROR 0
+//Flag for each set of commands and labels:
 #define NONE_FLAG 1
 #define PUSHI_FLAG 2
 #define PRINT_FLAG 3
@@ -36,6 +40,8 @@ class Parser
 
     int GetFlag(string line, string* parsed_command);
     //Create and STMT:
-    void BuildStmt(int flag, string line, string command,vector<STMT*> inst_buffer);
+    void BuildStmt(int flag, string line, string command,InstructBuf* ibuf);
 };
+
+
 #endif 

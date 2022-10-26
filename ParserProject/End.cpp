@@ -7,5 +7,6 @@ End::End()
 
 string End::Printer()
 {
-    return "End\n";
+    //return "End\n";
+    return "End";
 }

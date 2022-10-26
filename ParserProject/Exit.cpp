@@ -7,5 +7,6 @@ Exit::Exit()
 
 string Exit::Printer()
 {
-    return "Exit\n";
+    //return "Exit\n";
+    return "Exit";
 }

@@ -8,5 +8,6 @@ Start::Start()
 
 string Start::Printer()
 {
-    return "Start\n";
+    //return "Start\n";
+    return "Start";
 }
