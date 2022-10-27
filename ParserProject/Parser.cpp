@@ -76,10 +76,11 @@ int Parser::GetFlag(string entry, string *parsed_command)
     command is the command parsed from the file eg. add then command = add, eg2. pushi 3 then command = pushi,
     ibuf is the object to hold the Instruction Buffer, check the function to see how we use it to Print the insturction buffer 
 */
-void Parser::BuildStmt(int flag, string line, string command, InstructBuf *ibuf)
+void Parser::BuildStmt(int flag, string line, string command, InstructBuf *ibuf, StringBuf* sbuf)
 {
     // Create stmt variable:
-    //STMT *stmt = nullptr;
+    STMT* stmt;
+    int idx;
 
     /*Count the number of paramters for the command, by counting whitespace:
     //Count how many parameters there are, if 2 whitepsaces, then it means;
@@ -159,7 +160,7 @@ void Parser::BuildStmt(int flag, string line, string command, InstructBuf *ibuf)
         if (command == "pushi"){
             cerr << "Pushi in STMT\n";
             PushI *push = new PushI();
-            int idx = line.find_first_of(" ");
+            idx = line.find_first_of(" ");
             push->push_var = line.substr(idx + 1);
             ibuf->inst_buffer.push_back(push);
             break;
@@ -169,6 +170,17 @@ void Parser::BuildStmt(int flag, string line, string command, InstructBuf *ibuf)
         if (command == "prints"){
             // SYMBOL TABLE
             cerr << "Prints in STMT\n";
+            Prints* stmt = new Prints(sbuf->str_buffer.size()-1);
+            idx = line.find_first_of(" ");
+            stmt->print_val = line.substr(idx + 1);
+            stmt->count += 1; //Increment by one
+            ibuf->inst_buffer.push_back(stmt);
+            sbuf->str_buffer.push_back(stmt->print_val);
+
+            cerr<<"COUNT: " << stmt->count<<"\n";
+            cerr<<"BUFFER Size: "<< sbuf->str_buffer.size()<< "\n";
+            //for(int i = 0; i < sbuf->str_buffer.size();i++){cerr<<"PRINTS BUFFER: "<< sbuf->str_buffer[i] << "\n";} //This just tests if the buffer is filled correctly
+            //This needs to be the 
             break;
         }
     case (DECLAR_FLAG):

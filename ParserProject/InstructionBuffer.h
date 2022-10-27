@@ -2,6 +2,7 @@
 #define _INSTRUCTIONBUFFER_ 
 #include "Stmt.h"
 
+//For Instruction Buffer:
 #include "Add.h"
 #include "Declscal.h"
 #include "Div.h"
@@ -19,6 +20,8 @@
 #include "SubLabel.h"
 #include "Swap.h"
 
+//For String Buffer:
+#include "Prints.h"
 
 
 

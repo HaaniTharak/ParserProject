@@ -1,6 +1,7 @@
 #ifndef PARSER
 #define PARSER
 #include "InstructionBuffer.h"
+#include "StringBuffer.h"
 #include "Stmt.h"
 #include <cctype>
 #include <cstring>
@@ -43,7 +44,7 @@ class Parser
     and ease of implementation by defining the types*/
     int GetFlag(string line, string* parsed_command);
     //Create and  Build STMT:
-    void BuildStmt(int flag, string line, string command,InstructBuf* ibuf);
+    void BuildStmt(int flag, string line, string command,InstructBuf* ibuf, StringBuf* sbuf);
 };
 
 

@@ -1,9 +1,5 @@
 #include "PushI.h"
 
-/*
-THIS NEEDS TO BE EDITED!!!!!!!!!!!!!
-
-*/
 PushI::PushI()
 {
     return;

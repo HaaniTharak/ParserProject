@@ -48,7 +48,7 @@ int ErrorChecking(char* arg)
   This runs the Parser, if anything needs to be runner, for the parser,
   then it should be run here(this is unlikely but mentioned just in case):
 */
-void ReadCommand(string line, InstructBuf* ibuf)
+void ReadCommand(string line, InstructBuf* ibuf, StringBuf* sbuf)
 {
     Parser obj; //Parser object to call the function 
     //Convert instructions to lowercase(For consistentcy and to ALWAYS ensure correct inputs in program):
@@ -62,5 +62,5 @@ void ReadCommand(string line, InstructBuf* ibuf)
     //Stores the parsed command to which gets executed in BuildStmt
     string parsed_command;
     int flag = obj.GetFlag(lower, &parsed_command);
-    obj.BuildStmt(flag, lower, parsed_command, ibuf);
+    obj.BuildStmt(flag, lower, parsed_command, ibuf, sbuf);
 }

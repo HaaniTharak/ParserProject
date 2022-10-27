@@ -1,6 +1,7 @@
 Start
 Add
-PrintTOS
-Start
+prints hello
+prints not
+prints here
 Exit
 end

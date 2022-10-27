@@ -10,7 +10,7 @@
 int ErrorChecking(char* arg);
 
 //This function does the heavey lifting for the parser, and calls and runs a a majority of the code:
-void ReadCommand(string line, InstructBuf* ibuf);
+void ReadCommand(string line, InstructBuf* ibuf, StringBuf* sbuf);
 
 
 #endif 
